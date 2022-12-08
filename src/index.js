@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import Test from "./Test";
+// Components
+import Example from "./components/Example";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Test />
+    <Example text='this is an example' />
   </React.StrictMode>
 );
