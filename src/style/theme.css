@@ -1,3 +1,6 @@
-body {
-  background-color: aqua;
+:root {
+  --backgroundcolor: rgb(240, 240, 240);
+  --background-gray: rgb(220, 220, 220);
+  --primary-accent-color: #6495ed;
+  --secondary-accent-color: #6082b6;
 }
