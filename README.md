@@ -4,13 +4,13 @@
 
 First install all the required modules for the project by running the following command:
 
-```cmd
+```
 npm install
 ```
 
 Then start the project by running the following command:
 
-```cmd
+```
 npm start
 ```
 
