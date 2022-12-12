@@ -1,0 +1,7 @@
+.FlexRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  margin-inline: 1rem;
+}

@@ -1,20 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+// React Router DOM
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 // CSS
 import "./style/globals.css";
 import "./style/theme.css";
 
 // Components
-import { Button, Header, Layout, Textbox } from "./components";
+import { Home, NoPage } from "./views";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Layout>
-      <Header>Fuel Expenses Calculator</Header>
-      <Textbox text='Kulut'></Textbox>
-      <Button>Testi nappula</Button>
-    </Layout>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='*' element={<NoPage />} />
+      </Routes>
+    </Router>
   </React.StrictMode>
 );
