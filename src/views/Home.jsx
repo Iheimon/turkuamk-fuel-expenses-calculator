@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 /**
  * NOTE!
  * @description Views do not contain any styling or childrens!
  */
 
+import { GlobalContext } from "../context/state";
+
 // Components
-import { Button, Header, Layout, Textbox, FlexRow, TransactionList} from "../components";
-import { GlobalProvider } from "../context/GlobalState";
+import { Button, Header, Layout, Textbox, FlexRow, SummaryTable } from "../components";
 
 const Home = () => {
-  // TODO: Move component state to the context provider
   const [rowValues, setRowValues] = useState([]);
+  const { addExpense, expenses } = useContext(GlobalContext);
 
   /**
    * Handles the element onChange event by storing the new value to the component state.
@@ -49,8 +50,19 @@ const Home = () => {
     return validValueCount === itemCount && itemCount === 4;
   };
 
+  const convertRowsToObject = () => {
+    let rowObject = {};
+    rowValues.forEach((rowValue) => {
+      const { id, value } = rowValue;
+      if (id === "refuel-amount") rowObject = { ...rowObject, amount: value };
+      if (id === "refuel-price") rowObject = { ...rowObject, price: value };
+      if (id === "odometer-distance") rowObject = { ...rowObject, distance: value };
+      if (id === "car-name") rowObject = { ...rowObject, name: value };
+    });
+    return rowObject;
+  };
+
   return (
-    <GlobalProvider>
     <Layout>
       <Header>Fuel Expenses Calculator</Header>
       <FlexRow>
@@ -82,11 +94,12 @@ const Home = () => {
           value={getValue("car-name")}
           onChange={handleRowChange}
         />
-        <Button disabled={!allowExpenseAdd()}>Add Refueling Expense</Button>
+        <Button disabled={!allowExpenseAdd()} onClick={() => addExpense(convertRowsToObject())}>
+          Add Refueling Expense
+        </Button>
       </FlexRow>
-      <TransactionList>TransactionList</TransactionList>
+      <SummaryTable expenses={expenses} />
     </Layout>
-    </GlobalProvider>
   );
 };
 

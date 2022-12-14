@@ -1,0 +1,18 @@
+.SummaryTable {
+  width: 100%;
+  padding: 20px;
+}
+
+.SummaryTable > thead > tr > th {
+  text-align: start;
+  padding-right: 40px;
+}
+
+.SummaryTable > tfoot {
+  padding-top: 10px;
+}
+
+.SummaryTable > tfoot > tr > td {
+  text-align: start;
+  padding-right: 40px;
+}
