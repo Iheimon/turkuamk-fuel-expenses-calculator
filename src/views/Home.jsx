@@ -6,7 +6,8 @@ import React, { useState } from "react";
  */
 
 // Components
-import { Button, Header, Layout, Textbox, FlexRow } from "../components";
+import { Button, Header, Layout, Textbox, FlexRow, TransactionList} from "../components";
+import { GlobalProvider } from "../context/GlobalState";
 
 const Home = () => {
   // TODO: Move component state to the context provider
@@ -49,6 +50,7 @@ const Home = () => {
   };
 
   return (
+    <GlobalProvider>
     <Layout>
       <Header>Fuel Expenses Calculator</Header>
       <FlexRow>
@@ -82,7 +84,9 @@ const Home = () => {
         />
         <Button disabled={!allowExpenseAdd()}>Add Refueling Expense</Button>
       </FlexRow>
+      <TransactionList>TransactionList</TransactionList>
     </Layout>
+    </GlobalProvider>
   );
 };
 
